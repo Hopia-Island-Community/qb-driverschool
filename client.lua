@@ -140,7 +140,7 @@ local function StartDriveTest(type)
 		SetVehicleNumberPlateText(vehicle, 'TL' .. string.format('%06d', math.random(1, 999999)))
 		SetEntityHeading(vehicle, Config.Zones.VehicleSpawnPoint.Pos.w)
 		exports['LegacyFuel']:SetFuel(vehicle, 100.0)
-		TriggerEvent('vehiclekeys:client:SetOwner', QBCore.Functions.GetPlate(vehicle))		
+		TriggerEvent('vehiclekeys:client:SetOwner', QBCore.Functions.GetPlate(vehicle))
 		SetVehicleCustomPrimaryColour(vehicle, 0, 0, 0)
         SetVehicleDirtLevel(vehicle)
         SetVehicleUndriveable(vehicle, false)
@@ -192,17 +192,15 @@ local function EnumerateEntitiesWithinDistance(entities, isPlayerEntities, coord
 end
 
 local function GetVehiclesInArea(coords, maxDistance)
-	return EnumerateEntitiesWithinDistance(QBCore.Functions.GetVehicles(), false, coords, maxDistance) 
+	return EnumerateEntitiesWithinDistance(QBCore.Functions.GetVehicles(), false, coords, maxDistance)
 end
 
 local function IsSpawnPointClear(coords, maxDistance)
-	return #GetVehiclesInArea(coords, maxDistance) == 0 
+	return #GetVehiclesInArea(coords, maxDistance) == 0
 end
 
 RegisterNUICallback('question', function(data, cb)
-	SendNUIMessage({
-		openSection = 'question'
-	})
+	SendNUIMessage({ openSection = 'question' })
 	cb()
 end)
 
@@ -242,7 +240,7 @@ RegisterNetEvent('driverschool:client:payTest', function(data)
 				TriggerServerEvent('driverschool:server:payTest', Config.Prices[data.type], data.type)
 			else
 				QBCore.Functions.Notify(Lang:t('info.someone_is_at_the_starting_line_please_wait_a_moment'), 'error', 2000)
-			end			
+			end
 		else
 			QBCore.Functions.Notify(Lang:t('info.you_have_not_passed_the_theory_test'), 'error', 2000)
 		end
@@ -312,7 +310,7 @@ CreateThread(function() -- Drive test
 					end
 				end
 			end
-		else			
+		else
 			Wait(1000)-- not currently taking driver test
 		end
 	end
@@ -386,11 +384,11 @@ local function NearPed(model, coords, heading, gender, animDict, animName, scena
 	end
 	if gender == 'male' then
 		genderNum = 4
-	elseif gender == 'female' then 
+	elseif gender == 'female' then
 		genderNum = 5
 	else
-	
-	end	
+
+	end
 	ped = CreatePed(genderNum, GetHashKey(v.model), coords, heading, false, true)
 	SetEntityAlpha(ped, 0, false)
 	FreezeEntityPosition(ped, true)
@@ -404,7 +402,7 @@ local function NearPed(model, coords, heading, gender, animDict, animName, scena
 		TaskPlayAnim(ped, animDict, animName, 8.0, 0, -1, 1, 0, 0, 0)
 	end
 	if scenario then
-		TaskStartScenarioInPlace(ped, scenario, 0, true) 
+		TaskStartScenarioInPlace(ped, scenario, 0, true)
 	end
 	for i = 0, 255, 51 do
 		Wait(50)

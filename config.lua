@@ -1,11 +1,11 @@
 QBCore = exports['qb-core']:GetCoreObject()
 
 local function CheckPlayers(vehicle) -- Check if there is someone in the car, if so, get that person out of the car
-    for i = -1, 5,1 do                
+    for i = -1, 5,1 do
         seat = GetPedInVehicleSeat(vehicle,i)
         if seat ~= 0 then
             TaskLeaveVehicle(seat,vehicle,0)
-            SetVehicleDoorsLocked(vehicle)			
+            SetVehicleDoorsLocked(vehicle)
             Wait(3000)
             QBCore.Functions.DeleteVehicle(vehicle)
         end
@@ -31,7 +31,7 @@ Config.Prices = {
 
 Config.VehicleModels = {
 	A  = 'sanchez',
-	B = 'blista',	
+	B = 'blista',
 	C = 'phantom3',
 	D = 'bus',
 	--E = '',
@@ -40,9 +40,9 @@ Config.VehicleModels = {
 }
 
 Config.SpeedLimits = {
-	residence = 50,
+	residence = 80,
 	town      = 80,
-	freeway   = 120
+	freeway   = 130
 }
 
 Config.Zones = {
@@ -58,7 +58,7 @@ Config.CheckPoints = {
 	{
 		Pos = vector3(249.409, -1407.230, 29.537),
 		Action = function(playerPed, vehicle, setCurrentZoneType)
-			CreateThread(function()				
+			CreateThread(function()
 				local class = GetVehicleClass(vehicle)
 				if class ~= 8 and class ~= 13 and class ~= 14 then
 					QBCore.Functions.Notify(Lang:t('info.fasten_your_seat_belt_and_start_the_engine_to_start_the_test'), 'info', 4000)
@@ -66,7 +66,7 @@ Config.CheckPoints = {
 					FreezeEntityPosition(vehicle, true)
 					Wait(4000)
 					while not exports['qb-hud']:checkseatbelt() do
-						Wait(100)					
+						Wait(100)
 					end
 					Wait(100)
 					while not GetIsVehicleEngineRunning(vehicle) do
@@ -213,14 +213,14 @@ Config.CheckPoints = {
 Config.PedList = {
 	{
 		model = 'ig_paper',
-		coords = vector3(210.49, -1381.94, 29.58),               
+		coords = vector3(210.49, -1381.94, 29.58),
 		heading = 140.35,
 		gender = 'male',
         scenario = 'WORLD_HUMAN_CLIPBOARD'
 	},
 	{
 		model = 'ig_paper',
-		coords = vector3(250.96, -1413.1, 29.59),              
+		coords = vector3(250.96, -1413.1, 29.59),
 		heading = 32.17,
 		gender = 'male',
         scenario = 'WORLD_HUMAN_CLIPBOARD'

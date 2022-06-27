@@ -36,7 +36,7 @@ function closeAll() {
 	$(".body").css("display", "none");
 }
 function openQuestionnaire() {
-	
+
 	$(".questionnaire-container").css("display", "block");
 	var randomQuestion = getRandomQuestion();
 
@@ -102,11 +102,11 @@ window.addEventListener('message', function (event) {
 
 // Handle Button Presses
 $(".btnQuestion").click(function () {
-	$.post('http://driverschool/question', JSON.stringify({}));
+	$.post('https://qb-driverschool/question', JSON.stringify({}));
 });
 
 $(".btnClose").click(function () {
-	$.post('http://driverschool/close', JSON.stringify({}));
+	$.post('https://qb-driverschool/close', JSON.stringify({}));
 	userAnswer = [];
 	goodAnswer = [];
 	questionUsed = [];
@@ -114,7 +114,7 @@ $(".btnClose").click(function () {
 });
 
 $(".btnKick").click(function () {
-	$.post('http://driverschool/kick', JSON.stringify({}));
+	$.post('https://qb-driverschool/kick', JSON.stringify({}));
 	userAnswer = [];
 	goodAnswer = [];
 	questionUsed = [];
