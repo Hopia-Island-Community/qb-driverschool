@@ -35,6 +35,7 @@ function openMain() {
 function closeAll() {
 	$(".body").css("display", "none");
 }
+
 function openQuestionnaire() {
 
 	$(".btnXClose").css("display", "none");
