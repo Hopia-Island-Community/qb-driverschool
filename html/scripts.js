@@ -37,7 +37,9 @@ function closeAll() {
 }
 function openQuestionnaire() {
 
+	$(".btnXClose").css("display", "none");
 	$(".questionnaire-container").css("display", "block");
+
 	var randomQuestion = getRandomQuestion();
 
 	$("#questionNumero").html(multilang.question + questionNumber);
