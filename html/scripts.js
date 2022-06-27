@@ -108,7 +108,7 @@ $(".btnQuestion").click(function () {
 	$.post('https://qb-driverschool/question', JSON.stringify({}));
 });
 
-$(".btnClose").click(function () {
+$(".btnClose .btnXClose").click(function () {
 	$.post('https://qb-driverschool/close', JSON.stringify({}));
 	userAnswer = [];
 	goodAnswer = [];
