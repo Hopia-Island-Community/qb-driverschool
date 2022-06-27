@@ -1,15 +1,13 @@
 fx_version 'adamant'
 game 'gta5'
 
-author 'Hoàng Đức'
+author 'Devix'
 version '1.0.0'
 description 'Driving School - convert and edit from esx_dmvschool, ESX to QB-Core Framework'
 
-version '1.0.4'
-
 shared_scripts {
     '@qb-core/shared/locale.lua',
-    'locales/en.lua', -- Change this to your preferred language
+    'locales/fr.lua', -- Change this to your preferred language
 	'config.lua'
 }
 

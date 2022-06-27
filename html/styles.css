@@ -13,6 +13,7 @@ html {
 .question-container {
 	width: 70%;
 	height: 700px;
+	position: relative;
 	background-color: #fff;
 	border: 1px solid #222;
 	border-radius: 1px;
@@ -102,6 +103,15 @@ html {
 	border-radius: 4px;
 	color: #ffffff;
 	font-size: 1.5em;
+	text-decoration: none;
+}
+
+.btnXClose {
+	position: absolute;
+	top: 10px;
+	right: 10px;
+	font-size: 1.5em;
+	font-weight: bold;
 	text-decoration: none;
 }
 
