@@ -1,16 +1,14 @@
 QBCore = exports['qb-core']:GetCoreObject()
 
-RegisterNetEvent('driverschool:server:payTest', function(price, type)
+RegisterNetEvent('driverschool:server:payTest', function(price)
 	local src = source
 	local Player = QBCore.Functions.GetPlayer(src)
 	local bankBalance = Player.PlayerData.money['bank']
-	local cashBalance = Player.PlayerData.money['cash']	
+	local cashBalance = Player.PlayerData.money['cash']
 	if bankBalance >= price then
 		Player.Functions.RemoveMoney('bank', price, 'Pay the driving school test fee')
-		TriggerClientEvent('driverschool:client:startTest', src, type)
 	elseif cashBalance >= price then
 		Player.Functions.RemoveMoney('cash', price, 'Pay the driving school test fee')
-		TriggerClientEvent('driverschool:client:startTest', src, type)
 	else
 		TriggerClientEvent('QBCore:Notify', src, Lang:t('error.you_dont_have_enough_money'), 'error')
 	end

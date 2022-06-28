@@ -200,13 +200,20 @@ local function IsSpawnPointClear(coords, maxDistance)
 end
 
 RegisterNUICallback('question', function(data, cb)
+	TriggerServerEvent('driverschool:server:payTest', Config.Prices["N"])
 	SendNUIMessage({ openSection = 'question' })
 	cb()
 end)
 
-RegisterNUICallback('close', function(data, cb)
+RegisterNUICallback('end', function(data, cb)
 	StopTheoryTest(true)
 	cb()
+end)
+
+RegisterNUICallback('close', function()
+	CurrentTest = nil
+	SendNUIMessage({ openQuestion = false, multilang = {} })
+	SetNuiFocus(false)
 end)
 
 RegisterNUICallback('kick', function(data, cb)
@@ -226,9 +233,11 @@ end)
 
 RegisterNetEvent('driverschool:client:startTest', function(type)
 	if type ~= 'N' then
+		TriggerServerEvent('driverschool:server:payTest', Config.Prices[type])
 		StartDriveTest(type)
 	else
 		StartTheoryTest()
+
 	end
 end)
 
@@ -237,7 +246,7 @@ RegisterNetEvent('driverschool:client:payTest', function(data)
 	if data.type ~= 'N' then
 		if PlayerData.metadata['licences'].N then
 			if IsSpawnPointClear(vector3(Config.Zones.VehicleSpawnPoint.Pos.x, Config.Zones.VehicleSpawnPoint.Pos.y, Config.Zones.VehicleSpawnPoint.Pos.z), 2.5) then
-				TriggerServerEvent('driverschool:server:payTest', Config.Prices[data.type], data.type)
+				TriggerEvent('driverschool:client:startTest', data.type)
 			else
 				QBCore.Functions.Notify(Lang:t('info.someone_is_at_the_starting_line_please_wait_a_moment'), 'error', 2000)
 			end
@@ -248,7 +257,7 @@ RegisterNetEvent('driverschool:client:payTest', function(data)
 		if PlayerData.metadata['licences'].N then
 			QBCore.Functions.Notify(Lang:t('info.have_you_passed_the_theory_test'), 'error', 2000)
 		else
-			TriggerServerEvent('driverschool:server:payTest', Config.Prices[data.type], data.type)
+			TriggerEvent('driverschool:client:startTest', data.type)
 		end
 	end
 end)

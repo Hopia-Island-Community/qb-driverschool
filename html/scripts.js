@@ -108,8 +108,16 @@ $(".btnQuestion").click(function () {
 	$.post('https://qb-driverschool/question', JSON.stringify({}));
 });
 
-$(".btnClose .btnXClose").click(function () {
-	$.post('https://qb-driverschool/close', JSON.stringify({}));
+$(".btnXClose").click(function () {
+	$.post('https://qb-driverschool/close');
+	userAnswer = [];
+	goodAnswer = [];
+	questionUsed = [];
+	questionNumber = 1;
+});
+
+$(".btnClose").click(function () {
+	$.post('https://qb-driverschool/end', JSON.stringify({}));
 	userAnswer = [];
 	goodAnswer = [];
 	questionUsed = [];
