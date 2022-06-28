@@ -119,6 +119,14 @@ local function StartTheoryTest()
 	end)
 end
 
+local function payTest(test)
+	local p = promise.new()
+	QBCore.Functions.TriggerCallback('driverschool:server:payTest', function(result)
+		p:resolve(result)
+	end, test)
+	return Citizen.Await(p)
+end
+
 local function StopTheoryTest(success)
 	CurrentTest = nil
 	SendNUIMessage({
@@ -200,9 +208,12 @@ local function IsSpawnPointClear(coords, maxDistance)
 end
 
 RegisterNUICallback('question', function(data, cb)
-	TriggerServerEvent('driverschool:server:payTest', Config.Prices["N"])
-	SendNUIMessage({ openSection = 'question' })
-	cb()
+	if (payTest("N")) then
+		SendNUIMessage({ openSection = 'question' })
+		cb()
+	else
+		QBCore.Functions.Notify(Lang:t('error.you_dont_have_enough_money'), 'error')
+	end
 end)
 
 RegisterNUICallback('end', function(data, cb)
@@ -223,9 +234,7 @@ end)
 
 RegisterNetEvent('driverschool:client:startTheoryTest', function()
     CurrentTest = 'theory'
-	SendNUIMessage({
-		openQuestion = true
-	})
+	SendNUIMessage({ openQuestion = true })
 	SetTimeout(200, function()
 		SetNuiFocus(true, true)
 	end)
@@ -233,13 +242,18 @@ end)
 
 RegisterNetEvent('driverschool:client:startTest', function(type)
 	if type ~= 'N' then
-		TriggerServerEvent('driverschool:server:payTest', Config.Prices[type])
-		StartDriveTest(type)
+		if (payTest(type)) then
+			StartDriveTest(type)
+		else
+			QBCore.Functions.Notify(Lang:t('error.you_dont_have_enough_money'), 'error')
+		end
 	else
 		StartTheoryTest()
 
 	end
 end)
+
+
 
 RegisterNetEvent('driverschool:client:payTest', function(data)
 	PlayerData = QBCore.Functions.GetPlayerData()
