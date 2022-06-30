@@ -3,7 +3,7 @@ local Translations = {
 		['you_can_only_use_the_vehicle_provided_by_the_driving_school_to_take_this_test'] = 'Vous ne pouvez utiliser que le véhicule fourni par l\'école de conduite pour passer cet examen !',
  		['you_need_a_vehicle_to_take_the_test'] = 'Vous avez besoin d\'un véhicule pour passer le test !',
  		['you_have_been_deducted_5_points'] = 'Vous avez été déduit de 5 points',
- 		['total_score_has_been_deducted_x'] = 'Le score total a été déduit: %{score}',  
+ 		['total_score_has_been_deducted_x'] = 'Le score total a été déduit: %{score}',
 		['you_dont_have_enough_money'] = 'Vous n\'avez pas assez d\'argent',
     },
     success = {
@@ -14,7 +14,7 @@ local Translations = {
 		['you_drive_too_fast'] = 'Vous conduisez trop vite !',
 		['you_damaged_the_vehicle'] = 'Vous avez endommagé le véhicule !',
 		['youre_not_wearing_a_seat_belt'] = 'Vous ne portez pas votre ceinture de sécurité !',
-		['stop_for_pedestrians'] = 'Arrêtez-vous pour les piétons !',	
+		['stop_for_pedestrians'] = 'Arrêtez-vous pour les piétons !',
 	},
     info = {
         ['get_in_the_vehicle_at_the_starting_line_and_start_the_test'] = 'Montez dans le véhicule à la ligne de départ et commencez le test !',
@@ -51,7 +51,7 @@ local Translations = {
 		['questionlist1b'] = 'Vous gardez votre vitesse, si vous ne dépassez pas d\'autres véhicules',
 		['questionlist1c'] = 'Vous ralentissez',
 		['questionlist1d'] = 'Vous gardez votre vitesse',
-		['questionlist1r'] = 'C',		
+		['questionlist1r'] = 'C',
 		['questionlist2q'] = 'Si vous tournez à droite à un feu rouge, mais que vous voyez un piéton traverser, que faites-vous:',
 		['questionlist2a'] = 'Vous dépassez le piéton',
 		['questionlist2b'] = 'Vous vérifiez qu\'il n\'y a pas d\'autres véhicules autour',
@@ -112,7 +112,7 @@ local Translations = {
 		['a_class_driving_practice_test'] = 'A-Test pratique de conduite[$%{price}]',
 		['b_class_driving_practice_test'] = 'B-Test pratique de conduite[$%{price}]',
 		['c_class_driving_practice_test'] = 'C-Test pratique de conduite[$%{price}]',
-		['d_class_driving_practice_test'] = 'D-Test pratique de conduite[$%{price}]',	
+		['d_class_driving_practice_test'] = 'D-Test pratique de conduite[$%{price}]',
 	}
 }
 

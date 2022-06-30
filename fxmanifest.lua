@@ -16,7 +16,8 @@ server_scripts {
 }
 
 client_scripts {
-	'client.lua'
+	'client/client.lua',
+	'client/drivingTest.lua'
 }
 
 ui_page 'html/ui.html'

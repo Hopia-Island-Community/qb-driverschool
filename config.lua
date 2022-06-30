@@ -16,7 +16,7 @@ CustomFont = nil --[nil]: use system default font - or ['name of your custom fon
 
 Config = {}
 Config.scoretopass = 80
-Config.SpeedMultiplier = 3.6
+Config.SpeedMultiplier = 2.236936
 
 Config.Prices = {
 	N  = 500, -- theory
@@ -60,31 +60,23 @@ Config.CheckPoints = {
 		Action = function(playerPed, vehicle, setCurrentZoneType)
 			CreateThread(function()
 				local class = GetVehicleClass(vehicle)
+				PlaySound(-1, 'RACE_PLACED', 'HUD_AWARDS', false, 0, true)
+				FreezeEntityPosition(vehicle, true)
+
 				if class ~= 8 and class ~= 13 and class ~= 14 then
 					QBCore.Functions.Notify(Lang:t('info.fasten_your_seat_belt_and_start_the_engine_to_start_the_test'), 'info', 4000)
-					PlaySound(-1, 'RACE_PLACED', 'HUD_AWARDS', false, 0, true)
-					FreezeEntityPosition(vehicle, true)
-					Wait(4000)
-					while not exports['qb-hud']:checkseatbelt() do
+					while not exports['cd_carhud']:checkseatbelt() do
 						Wait(100)
 					end
-					Wait(100)
-					while not GetIsVehicleEngineRunning(vehicle) do
-						Wait(100)
-					end
-					FreezeEntityPosition(vehicle, false)
-					QBCore.Functions.Notify(Lang:t('success.very_good_go_to_the_next_point'), 'success', 4000)
 				else
 					QBCore.Functions.Notify(Lang:t('info.start_the_engine_to_start_the_test'), 'info', 4000)
-					PlaySound(-1, 'RACE_PLACED', 'HUD_AWARDS', false, 0, true)
-					FreezeEntityPosition(vehicle, true)
-					Wait(4000)
-					while not GetIsVehicleEngineRunning(vehicle) do
-						Wait(100)
-					end
-					FreezeEntityPosition(vehicle, false)
-					QBCore.Functions.Notify(Lang:t('success.very_good_go_to_the_next_point'), 'success', 4000)
 				end
+
+				while not GetIsVehicleEngineRunning(vehicle) do
+					Wait(100)
+				end
+				FreezeEntityPosition(vehicle, false)
+				QBCore.Functions.Notify(Lang:t('success.very_good_go_to_the_next_point'), 'success', 4000)
 			end)
 		end
 	},
