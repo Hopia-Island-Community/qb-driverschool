@@ -1,0 +1,23 @@
+html {
+	/* overflow: hidden; */
+	font-family: 'Roboto Condensed', sans-serif;
+}
+
+section {
+	text-align: center;
+	display: none;
+}
+
+.main-container {
+	height: 700px;
+	width: 100%;
+	overflow: hidden;
+	-ms-overflow-style: none;
+	scrollbar-width: none;
+	position: relative;
+	background-color: #fff;
+	border: 3px solid black;
+	border-radius: 10px;
+	z-index: 1;
+	display: none;
+}

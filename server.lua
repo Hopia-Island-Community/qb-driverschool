@@ -4,7 +4,7 @@ QBCore.Functions.CreateCallback('driverschool:server:payTest', function(source, 
 	local Player = QBCore.Functions.GetPlayer(source)
 	local bankBalance = Player.Functions.GetMoney('bank')
 	local cashBalance = Player.Functions.GetMoney('cash')
-	local price = Config.Prices[type]
+	local price = GetFormationByType(type).price
 
 	if bankBalance >= price then
 		Player.Functions.RemoveMoney('bank', price, 'Pay the driving school test fee')

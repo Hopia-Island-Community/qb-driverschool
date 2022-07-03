@@ -1,9 +1,10 @@
-fx_version 'adamant'
+fx_version 'cerulean'
 game 'gta5'
+lua54 'yes'
 
 author 'Devix'
-version '1.0.0'
-description 'Driving School - convert and edit from esx_dmvschool, ESX to QB-Core Framework'
+version '0.5.0'
+description 'Driving School'
 
 shared_scripts {
     '@qb-core/shared/locale.lua',
@@ -23,10 +24,9 @@ client_scripts {
 ui_page 'html/ui.html'
 
 files {
+	'html/configs.js',
+	'html/css/**.css',
+	'html/js/**.js',
+	'html/resources/**',
 	'html/ui.html',
-	'html/logo.png',
-	'html/dmv.png',
-	'html/styles.css',
-	'html/scripts.js',
-	'html/debounce.min.js'
 }

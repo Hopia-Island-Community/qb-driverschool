@@ -12,21 +12,22 @@ local function CheckPlayers(vehicle) -- Check if there is someone in the car, if
    end
 end
 
+
+
 CustomFont = nil --[nil]: use system default font - or ['name of your custom font']: You need your_custum_font.gfx EX: CustomFont = 'Oswald'
 
 Config = {}
 Config.scoretopass = 80
 Config.SpeedMultiplier = 2.236936
 
-Config.Prices = {
-	N  = 500, -- theory
-	A = 2500, -- motorcycle
-	B = 3000, -- car
-	C = 5000, -- trunk
-	D = 5000, -- bus
-	--E = 3000,
-	--F = 5000,
-	--G = 10000,
+Config.formations = {
+	{
+		title = "Examen théorique",
+		description = "Commencez votre avanture en vérifiant vos connaissance générales",
+		image = "",
+		type = "N",
+		price = 450
+	}
 }
 
 Config.VehicleModels = {
@@ -218,3 +219,13 @@ Config.PedList = {
         scenario = 'WORLD_HUMAN_CLIPBOARD'
 	},
 }
+
+
+
+-- DON TOUCH UNLESS YOU KNOW WHAT YOU DO
+function GetFormationByType(type)
+	for _,v in pairs(Config.formations) do
+		if (v.type == type) then return v end
+	end
+	return null
+end
