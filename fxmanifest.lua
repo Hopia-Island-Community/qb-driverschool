@@ -30,3 +30,8 @@ files {
 	'html/resources/**',
 	'html/ui.html',
 }
+
+escrow_ignore {
+	'config.lua',
+	'locales/**'
+}
