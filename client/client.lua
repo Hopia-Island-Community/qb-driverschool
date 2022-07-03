@@ -64,6 +64,26 @@ RegisterNUICallback('payTest', function(data, cb)
 	end
 end)
 
+RegisterNUICallback('startTest', function(data, cb)
+	PlayerData = QBCore.Functions.GetPlayerData()
+
+	if PlayerData.metadata['licences'].N then
+		if IsSpawnPointClear(vector3(Config.Zones.VehicleSpawnPoint.Pos.x, Config.Zones.VehicleSpawnPoint.Pos.y, Config.Zones.VehicleSpawnPoint.Pos.z), 2.5) then
+			if (payTest(data.type)) then
+				SetNuiFocus(false)
+				SendNUIMessage({ action = "close" })
+				StartDriveTest(data.type)
+			else
+				QBCore.Functions.Notify(Lang:t('error.you_dont_have_enough_money'), 'error')
+			end
+		else
+			QBCore.Functions.Notify(Lang:t('info.someone_is_at_the_starting_line_please_wait_a_moment'), 'error', 2000)
+		end
+	else
+		QBCore.Functions.Notify(Lang:t('info.you_have_not_passed_the_theory_test'), 'error', 2000)
+	end
+end)
+
 RegisterNUICallback('give', function(data, cb)
 	TriggerServerEvent('driverschool:server:addLicense', 'N')
 end)
@@ -72,27 +92,6 @@ end)
 RegisterNUICallback('close', function()
 	CurrentTest = nil
 	SetNuiFocus(false)
-end)
-
-RegisterNetEvent('driverschool:client:payTest', function(data)
-	PlayerData = QBCore.Functions.GetPlayerData()
-	if data.type ~= 'N' then
-		if PlayerData.metadata['licences'].N then
-			if IsSpawnPointClear(vector3(Config.Zones.VehicleSpawnPoint.Pos.x, Config.Zones.VehicleSpawnPoint.Pos.y, Config.Zones.VehicleSpawnPoint.Pos.z), 2.5) then
-				TriggerEvent('driverschool:client:startTest', data.type)
-			else
-				QBCore.Functions.Notify(Lang:t('info.someone_is_at_the_starting_line_please_wait_a_moment'), 'error', 2000)
-			end
-		else
-			QBCore.Functions.Notify(Lang:t('info.you_have_not_passed_the_theory_test'), 'error', 2000)
-		end
-	else
-		if PlayerData.metadata['licences'].N then
-			QBCore.Functions.Notify(Lang:t('info.have_you_passed_the_theory_test'), 'error', 2000)
-		else
-			TriggerEvent('driverschool:client:startTest', data.type)
-		end
-	end
 end)
 
 local function NearPed(model, coords, heading, gender, animDict, animName, scenario)

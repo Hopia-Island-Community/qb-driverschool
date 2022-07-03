@@ -11,7 +11,7 @@
 			<div class="offset-2 col-8 d-flex align-items-center">
 				<div class="main-container">
 
-					<nav class="navbar navbar-expand-lg sticky-top navbar-dark bg-dark">
+					<nav class="navbar navbar-expand-lg sticky-top navbar-dark bg-dark" style="z-index: 99999;">
 						<div class="container-fluid">
 						  	<span class="navbar-brand">
 								<img src="resources/logo.png" alt="" width="30" height="30" class="d-inline-block align-text-top">
@@ -166,6 +166,30 @@
 								<div class="col-12 mt-2">
 									<button type="button" class="btn btn-next btn-success" style="display:none">Question suivante</button>
 								</div>
+							</div>
+						</div>
+
+					</section>
+
+					<section id="section-result" class="row page-section">
+						<div class="col-12 section-container">
+							<div class="row mt-2">
+								<div class="col-12">
+									<h2>Résultats</h2>
+									<img src="resources/back.jpg" class="img-thumbnail" alt="" style="max-height: 300px">
+								</div>
+							</div>
+
+							<div class="row mt-2">
+								<div class="offset-1 col-10">
+									<p>Vos réponse ont bien été prise en compte, voici votre résultat à l'examen: <br><strong id="test-result"></strong></p>
+								</div>
+								<div class="col-12 mt-1">
+									<h3 id="result-text"></h3>
+								</div>
+							</div>
+							<div class="col-12 mt-5">
+								<button type="button" class="btn btn-secondary" id="close-btn2" >Fermer la fenetre</button>
 							</div>
 						</div>
 

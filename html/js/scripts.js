@@ -78,21 +78,27 @@ window.addEventListener('message', function (event) {
 	if (item.action == "start") {
 		startTest(item.type);
 	}
+
+	if (item.action == "close") {
+		$(".main-container").hide();
+	}
 });
 
 $("#nav-home").on("click", function() {
-	if (router.isOn("question"))
+	if (router.isOn("question") || router.isOn("result"))
 		return;
 	router.push("home");
 });
 
 $("#nav-work").on("click", function() {
-	if (router.isOn("question"))
+	if (router.isOn("question") || router.isOn("result"))
 		return;
 	router.push("work");
 });
 
 $("#nav-form").on("click", function() {
+	if (router.isOn("question") || router.isOn("result"))
+		return;
 	router.push("form");
 });
 
@@ -102,16 +108,18 @@ $(".btn-response").on("click", function() {
 	$(".btn-next").show();
 })
 
+$("#close-btn2").click(function () {
+
+	$(".main-container").hide();
+	$.post('https://qb-driverschool/close');
+});
+
 $("#close-btn").click(function () {
 	if (router.isOn("question"))
 		return;
 
 	$(".main-container").hide();
 	$.post('https://qb-driverschool/close');
-	userAnswer = [];
-	goodAnswer = [];
-	questionUsed = [];
-	questionNumber = 1;
 });
 
 function getRandomQuestion() {
@@ -130,6 +138,8 @@ function startTest(type) {
 		questionNumber = 0;
 		nextQuestion();
 		router.push("question");
+	} else {
+		$.post('https://qb-driverschool/startTest', JSON.stringify({ type }));
 	}
 }
 
@@ -157,10 +167,14 @@ function endTest() {
 		score += (question.responses[val].type) ? 1 : 0;
 	});
 
-	console.log("final score: ", score);
+	router.push('result');
+	$("#test-result").html(score + "/" + Configs.nbQuestionToAnswer);
 
 	if (score >= Configs.neededPoint) {
+		$("#result-text").html("FAVORABLE").css("color", "#2d9e00")
 		$.post('https://qb-driverschool/give');
+	} else {
+		$("#result-text").html("INSUFFISANT").css("color", "#b80f00")
 	}
 }
 

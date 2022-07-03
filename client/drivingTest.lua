@@ -71,7 +71,7 @@ local function StartTestThreads()
                             if not IsAboveSpeedLimit then
                                 DriveErrors = DriveErrors + 5
                                 IsAboveSpeedLimit = true
-                                QBCore.Functions.Notify(Lang:t('warning.you_drive_too_fast'), 'warning', 2000)
+                                QBCore.Functions.Notify(Lang:t('warning.you_drive_too_fast'), 'primary', 2000)
                                 QBCore.Functions.Notify(Lang:t('error.you_have_been_deducted_5_points'), 'error', 2000)
                                 QBCore.Functions.Notify(Lang:t('error.total_score_has_been_deducted_x', {score = DriveErrors}), 'error', 2000)
                             end
@@ -83,7 +83,7 @@ local function StartTestThreads()
                     local health = GetEntityHealth(vehin)
                     if health < LastVehicleHealth then
                         DriveErrors = DriveErrors + 5
-                        QBCore.Functions.Notify(Lang:t('warning.you_damaged_the_vehicle'), 'warning', 2000)
+                        QBCore.Functions.Notify(Lang:t('warning.you_damaged_the_vehicle'), 'primary', 2000)
                         QBCore.Functions.Notify(Lang:t('error.you_have_been_deducted_5_points'), 'error', 2000)
                         QBCore.Functions.Notify(Lang:t('error.total_score_has_been_deducted_x', {score = DriveErrors}), 'error', 2000)
                         LastVehicleHealth = health
@@ -93,7 +93,7 @@ local function StartTestThreads()
                         if not exports['cd_carhud']:checkseatbelt() and CurrentCheckPoint > 1 and not seatbelterr[CurrentCheckPoint] then
                             seatbelterr[CurrentCheckPoint] = true
                             DriveErrors = DriveErrors + 5
-                            QBCore.Functions.Notify(Lang:t('warning.youre_not_wearing_a_seat_belt'), 'warning', 2000)
+                            QBCore.Functions.Notify(Lang:t('warning.youre_not_wearing_a_seat_belt'), 'primary', 2000)
                             QBCore.Functions.Notify(Lang:t('error.you_have_been_deducted_5_points'), 'error', 2000)
                             QBCore.Functions.Notify(Lang:t('error.total_score_has_been_deducted_x', {score = DriveErrors}), 'error', 2000)
                             Wait(1500)
@@ -125,8 +125,8 @@ function StopDriveTest(success)
 end
 
 function StartDriveTest(type)
-	QBCore.Functions.Notify(Lang:t('info.get_in_the_vehicle_at_the_starting_line_and_start_the_test'), 'info', 4000)
-	QBCore.Functions.SpawnVehicle(Config.VehicleModels[type], function(vehicle)
+	QBCore.Functions.Notify(Lang:t('info.get_in_the_vehicle_at_the_starting_line_and_start_the_test'), 'primary', 4000)
+	QBCore.Functions.SpawnVehicle(GetFormationByType(type).vehicles[1], function(vehicle)
 		SetVehicleNumberPlateText(vehicle, 'TL' .. string.format('%06d', math.random(1, 999999)))
 		SetEntityHeading(vehicle, Config.Zones.VehicleSpawnPoint.Pos.w)
 		exports['LegacyFuel']:SetFuel(vehicle, 100.0)

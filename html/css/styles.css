@@ -14,6 +14,7 @@ section {
 	overflow: hidden;
 	-ms-overflow-style: none;
 	scrollbar-width: none;
+	overflow-y: auto;
 	position: relative;
 	background-color: #fff;
 	border: 3px solid black;
