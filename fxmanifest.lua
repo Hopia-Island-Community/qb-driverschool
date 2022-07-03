@@ -8,7 +8,7 @@ description 'Driving School'
 
 shared_scripts {
     '@qb-core/shared/locale.lua',
-    'locales/fr.lua', -- Change this to your preferred language
+    'locales/en.lua', -- Change this to your preferred language
 	'config.lua'
 }
 

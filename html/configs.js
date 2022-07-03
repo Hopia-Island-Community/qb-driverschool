@@ -1,5 +1,8 @@
 Configs = {};
 
+// What locale do you want to use
+Configs.locale = 'en'
+
 // The number of question that will be presented to the player
 Configs.nbQuestionToAnswer = 10
 

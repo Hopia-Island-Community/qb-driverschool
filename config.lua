@@ -24,14 +24,14 @@ Config.formations = {
 	{
 		title = "Examen théorique",
 		description = "Commencez votre aventure en vérifiant vos connaissance générales",
-		image = "",
+		image = "resources/formations/code.png",
 		type = "N",
 		price = 450
 	},
 	{
 		title = "Passage permis A",
 		description = "Obligatoire pour la conduite de véhicule deux roues",
-		image = "",
+		image = "resources/formations/sanchez.jpg",
 		type = "A",
 		vehicles = {'sanchez'},
 		price = 3500
@@ -39,7 +39,7 @@ Config.formations = {
 	{
 		title = "Passage permis B",
 		description = "Le permis B permet de conduire une voiture ou une camionnette. Il permet aussi de conduire, sous conditions, un camping-car, une moto légère (scooter, moto 125) ou un tracteur",
-		image = "",
+		image = "resources/formations/blista.jpg",
 		type = "B",
 		vehicles = {'blista'},
 		price = 5000
@@ -47,7 +47,7 @@ Config.formations = {
 	{
 		title = "Passage permis C",
 		description = "La catégorie C du permis de conduire autorise la conduite des véhicules affectés au transport de marchandises ou de matériel",
-		image = "",
+		image = "resources/formations/phantom.jpg",
 		type = "C",
 		vehicles = {'phantom3'},
 		price = 9000
@@ -55,7 +55,7 @@ Config.formations = {
 	{
 		title = "Passage permis D",
 		description = "Le permis D autorise la conduite d'un véhicule affecté au transport de personnes comportant plus de 9 places assises (conducteur compris)",
-		image = "",
+		image = "resources/formations/bus.jpg",
 		type = "D",
 		vehicles = {'bus'},
 		price = 7500

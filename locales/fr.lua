@@ -49,12 +49,7 @@ local Translations = {
 
     },
 	menu = {
-		['open'] = "Ouvrir le menn",
-		['driving_theory_test'] = 'Examen théorique de conduite [$%{price}]',
-		['a_class_driving_practice_test'] = 'A-Test pratique de conduite[$%{price}]',
-		['b_class_driving_practice_test'] = 'B-Test pratique de conduite[$%{price}]',
-		['c_class_driving_practice_test'] = 'C-Test pratique de conduite[$%{price}]',
-		['d_class_driving_practice_test'] = 'D-Test pratique de conduite[$%{price}]',
+		['open'] = "Ouvrir le menu",
 	}
 }
 

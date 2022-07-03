@@ -47,7 +47,7 @@ function getNewFormation(infos) {
 					</div>
 				</div>`
 	console.log("posseded: ", infos.disabled)
-	html = html.replace("_image", infos.path)
+	html = html.replace("_image", infos.image)
 				.replace("_title", infos.title)
 				.replace("_description", infos.description)
 				.replace("_type", infos.type)
@@ -191,5 +191,10 @@ $(".btn-next").on("click", function() {
 
 $("#formation-container").on("click", ".start-formation", function() {
 	var type = $(this).data("type");
-	$.post('https://qb-driverschool/payTest', JSON.stringify({ type }));
+	if (type == "N") {
+		$.post('https://qb-driverschool/payTest', JSON.stringify({ type }));
+	} else {
+		$.post('https://qb-driverschool/startTest', JSON.stringify({ type }));
+	}
+
 })
