@@ -129,10 +129,10 @@ end
 
 CreateThread(function() -- Create Blips
     local blip = AddBlipForCoord(vector3(210.49, -1381.94, 29.58))
-    SetBlipSprite(blip, 525)
+    SetBlipSprite(blip, 814)
     SetBlipDisplay(blip, 4)
-    SetBlipScale(blip, 0.7)
-    SetBlipColour(blip, 4)
+    SetBlipScale(blip, 0.65)
+    SetBlipColour(blip, 43)
     SetBlipAsShortRange(blip, true)
     BeginTextCommandSetBlipName('STRING')
 	if CustomFont ~= nil then
