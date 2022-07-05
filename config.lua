@@ -26,7 +26,7 @@ Config.formations = {
 		description = "Commencez votre aventure en vérifiant vos connaissance générales",
 		image = "resources/formations/code.png",
 		type = "N",
-		price = 450
+		price = 500
 	},
 	{
 		title = "Passage permis A",
@@ -34,7 +34,7 @@ Config.formations = {
 		image = "resources/formations/sanchez.jpg",
 		type = "A",
 		vehicles = {'sanchez'},
-		price = 3500
+		price = 1500
 	},
 	{
 		title = "Passage permis B",
@@ -42,7 +42,7 @@ Config.formations = {
 		image = "resources/formations/blista.jpg",
 		type = "B",
 		vehicles = {'blista'},
-		price = 5000
+		price = 2000
 	},
 	{
 		title = "Passage permis C",
@@ -50,7 +50,7 @@ Config.formations = {
 		image = "resources/formations/phantom.jpg",
 		type = "C",
 		vehicles = {'phantom3'},
-		price = 9000
+		price = 4000
 	},
 	{
 		title = "Passage permis D",
@@ -58,7 +58,7 @@ Config.formations = {
 		image = "resources/formations/bus.jpg",
 		type = "D",
 		vehicles = {'bus'},
-		price = 7500
+		price = 6000
 	}
 }
 
