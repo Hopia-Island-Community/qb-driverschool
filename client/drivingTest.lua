@@ -29,10 +29,10 @@ local function StartTestThreads()
 				CurrentTest = nil
 				QBCore.Functions.Notify(Lang:t('success.you_have_completed_your_driving_test'), 'success', 2000)
 				StopDriveTest(((100 - DriveErrors) >= Config.scoretopass))
-				break;
+				return;
 			end
 
-			if IsPedInAnyVehicle(playerPed) then
+			if IsPedInAnyVehicle(playerPed, false) then
 				notinvehicle = false
 				local vehin = GetVehiclePedIsIn(playerPed)
 				local vehinplate = QBCore.Functions.GetPlate(vehin)
@@ -46,23 +46,6 @@ local function StartTestThreads()
 					end
 				else
 					wrongvehicle = false
-					if CurrentCheckPoint ~= LastCheckPoint then
-						if DoesBlipExist(CurrentBlip) then
-							RemoveBlip(CurrentBlip)
-						end
-						CurrentBlip = AddBlipForCoord(Config.CheckPoints[nextCheckPoint].Pos)
-						SetBlipRoute(CurrentBlip, 1)
-						LastCheckPoint = CurrentCheckPoint
-					end
-					local distance = #(coords - Config.CheckPoints[nextCheckPoint].Pos)
-					if distance <= 100.0 then
-						DrawMarker(1, Config.CheckPoints[nextCheckPoint].Pos, 0.0, 0.0, 0.0, 0, 0.0, 0.0, 1.5, 1.5, 1.5, 102, 204, 102, 100, false, true, 2, false, false, false, false)
-					end
-					if distance <= 3.0 then
-						Config.CheckPoints[nextCheckPoint].Action(playerPed, CurrentVehicle, SetCurrentZoneType)
-						CurrentCheckPoint = CurrentCheckPoint + 1
-					end
-
                     local speed = GetEntitySpeed(vehin) * Config.SpeedMultiplier
                     local tooMuchSpeed = false
                     for k, v in pairs(Config.SpeedLimits) do
@@ -90,7 +73,7 @@ local function StartTestThreads()
                         Wait(1500)
                     end
                     if class ~= 8 and class ~= 13 and class ~= 14 then
-                        if not exports['cd_carhud']:checkseatbelt() and CurrentCheckPoint > 1 and not seatbelterr[CurrentCheckPoint] then
+                        if not exports['cd_carhud']:checkseatbelt() and CurrentCheckPoint > 1 and not seatbelterr[CurrentCheckPoint] and speed > 10 then
                             seatbelterr[CurrentCheckPoint] = true
                             DriveErrors = DriveErrors + 5
                             QBCore.Functions.Notify(Lang:t('warning.youre_not_wearing_a_seat_belt'), 'primary', 2000)
@@ -99,6 +82,23 @@ local function StartTestThreads()
                             Wait(1500)
                         end
                     end
+
+					if CurrentCheckPoint ~= LastCheckPoint then
+						if DoesBlipExist(CurrentBlip) then
+							RemoveBlip(CurrentBlip)
+						end
+						CurrentBlip = AddBlipForCoord(Config.CheckPoints[nextCheckPoint].Pos)
+						SetBlipRoute(CurrentBlip, 1)
+						LastCheckPoint = CurrentCheckPoint
+					end
+					local distance = #(coords - Config.CheckPoints[nextCheckPoint].Pos)
+					if distance <= 100.0 then
+						DrawMarker(1, Config.CheckPoints[nextCheckPoint].Pos, 0.0, 0.0, 0.0, 0, 0.0, 0.0, 1.5, 1.5, 1.5, 102, 204, 102, 100, false, true, 2, false, false, false, false)
+					end
+					if distance <= 3.0 then
+						Config.CheckPoints[nextCheckPoint].Action(playerPed, CurrentVehicle, SetCurrentZoneType)
+						CurrentCheckPoint = CurrentCheckPoint + 1
+					end
 				end
 			else
 				if CurrentCheckPoint > 1 then

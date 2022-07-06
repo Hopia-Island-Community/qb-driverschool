@@ -6,10 +6,10 @@ local function CheckPlayers(vehicle) -- Check if there is someone in the car, if
         if seat ~= 0 then
             TaskLeaveVehicle(seat,vehicle,0)
             SetVehicleDoorsLocked(vehicle)
-            Wait(3000)
-            QBCore.Functions.DeleteVehicle(vehicle)
         end
-   end
+   	end
+   	Wait(3000)
+	QBCore.Functions.DeleteVehicle(vehicle)
 end
 
 
