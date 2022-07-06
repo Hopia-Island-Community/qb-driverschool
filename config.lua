@@ -1,24 +1,23 @@
 QBCore = exports['qb-core']:GetCoreObject()
 
-local function CheckPlayers(vehicle) -- Check if there is someone in the car, if so, get that person out of the car
-    for i = -1, 5,1 do
-        seat = GetPedInVehicleSeat(vehicle,i)
-        if seat ~= 0 then
-            TaskLeaveVehicle(seat,vehicle,0)
-            SetVehicleDoorsLocked(vehicle)
-        end
-   	end
-   	Wait(3000)
-	QBCore.Functions.DeleteVehicle(vehicle)
-end
-
-
-
 CustomFont = nil --[nil]: use system default font - or ['name of your custom font']: You need your_custum_font.gfx EX: CustomFont = 'Oswald'
 
 Config = {}
 Config.scoretopass = 80
 Config.SpeedMultiplier = 3.6
+Config.seatbelt = false
+
+
+--[[
+ /$$$$$$$$                                            /$$     /$$
+| $$_____/                                           | $$    |__/
+| $$     /$$$$$$   /$$$$$$  /$$$$$$/$$$$   /$$$$$$  /$$$$$$   /$$  /$$$$$$  /$$$$$$$   /$$$$$$$
+| $$$$$ /$$__  $$ /$$__  $$| $$_  $$_  $$ |____  $$|_  $$_/  | $$ /$$__  $$| $$__  $$ /$$_____/
+| $$__/| $$  \ $$| $$  \__/| $$ \ $$ \ $$  /$$$$$$$  | $$    | $$| $$  \ $$| $$  \ $$|  $$$$$$
+| $$   | $$  | $$| $$      | $$ | $$ | $$ /$$__  $$  | $$ /$$| $$| $$  | $$| $$  | $$ \____  $$
+| $$   |  $$$$$$/| $$      | $$ | $$ | $$|  $$$$$$$  |  $$$$/| $$|  $$$$$$/| $$  | $$ /$$$$$$$/
+|__/    \______/ |__/      |__/ |__/ |__/ \_______/   \___/  |__/ \______/ |__/  |__/|_______/
+--]]
 
 Config.formations = {
 	{
@@ -223,7 +222,15 @@ Config.CheckPoints = {
 	{
 		Pos = vector3(235.283, -1398.329, 28.921),
 		Action = function(playerPed, vehicle, setCurrentZoneType)
-			CheckPlayers(vehicle)
+			for i = -1, 5,1 do
+				seat = GetPedInVehicleSeat(vehicle,i)
+				if seat ~= 0 then
+					TaskLeaveVehicle(seat,vehicle,0)
+					SetVehicleDoorsLocked(vehicle)
+				end
+			   end
+			   Wait(3000)
+			QBCore.Functions.DeleteVehicle(vehicle)
 		end
 	}
 }

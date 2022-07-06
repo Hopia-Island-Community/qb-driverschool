@@ -73,7 +73,7 @@ local function StartTestThreads()
                         Wait(1500)
                     end
                     if class ~= 8 and class ~= 13 and class ~= 14 then
-                        if not exports['cd_carhud']:checkseatbelt() and CurrentCheckPoint > 1 and not seatbelterr[CurrentCheckPoint] and speed > 10 then
+                        if not Checkseatbelt() and CurrentCheckPoint > 1 and not seatbelterr[CurrentCheckPoint] and speed > 10 then
                             seatbelterr[CurrentCheckPoint] = true
                             DriveErrors = DriveErrors + 5
                             QBCore.Functions.Notify(Lang:t('warning.youre_not_wearing_a_seat_belt'), 'primary', 2000)

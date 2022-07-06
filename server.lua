@@ -4,10 +4,12 @@ QBCore.Functions.CreateCallback('driverschool:server:payTest', function(source, 
 	local Player = QBCore.Functions.GetPlayer(source)
 	local bankBalance = Player.Functions.GetMoney('bank')
 	local cashBalance = Player.Functions.GetMoney('cash')
-	local price = GetFormationByType(type).price
+	local formation = GetFormationByType(type)
+	local price = formation.price
 
 	if bankBalance >= price then
 		Player.Functions.RemoveMoney('bank', price, 'Pay the driving school test fee')
+		TriggerEvent('okokBanking:AddTransferTransactionToSociety', price, source, "Auto-école", "Payement formation " .. formation.title)
 	elseif cashBalance >= price then
 		Player.Functions.RemoveMoney('cash', price, 'Pay the driving school test fee')
 	else
