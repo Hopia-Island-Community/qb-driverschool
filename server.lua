@@ -41,13 +41,15 @@ local label =[[
 ]]
 
 -- Grabs the latest version number from the web GitHub
-PerformHttpRequest( "https://skrilax91.github.io/qb-driverschool", function( err, body, headers )
+PerformHttpRequest( "https://skrilax91.github.io/qb-driverschool.json", function( err, b, headers )
 	-- Wait to reduce spam
 	Citizen.Wait( 2000 )
 
+	local body = json.decode(b);
+
 	-- Get the current resource version
 	local curVer = GetResourceMetadata( GetCurrentResourceName(), "version" )
-	local latest = body
+	local latest = body.version
 
 	label = label .. "  ||    Current version: " .. curVer
 
