@@ -17,5 +17,5 @@
 function Checkseatbelt()
 	if not Config.seatbelt then return true end
 
-	return exports['cd_carhud']:checkseatbelt()
+	return exports['cd_carhud']:SeatbeltCheck()
 end
