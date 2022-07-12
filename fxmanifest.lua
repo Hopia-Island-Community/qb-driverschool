@@ -3,7 +3,7 @@ game 'gta5'
 lua54 'yes'
 
 author 'Devix'
-version '0.6.2'
+version '0.6.3'
 description 'Driving School'
 
 shared_scripts {
