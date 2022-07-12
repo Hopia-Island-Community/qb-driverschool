@@ -19,7 +19,7 @@ server_scripts {
 client_scripts {
 	'client/client.lua',
 	'client/drivingTest.lua',
-	'client/cl_cutomise.lua'
+	'client/cl_customise.lua'
 }
 
 ui_page 'html/ui.html'
@@ -34,6 +34,6 @@ files {
 
 escrow_ignore {
 	'config.lua',
-	'client/cl_cutomise.lua',
+	'client/cl_customise.lua',
 	'locales/**'
 }
