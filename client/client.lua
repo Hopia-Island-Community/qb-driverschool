@@ -129,7 +129,7 @@ end
 
 CreateThread(function() -- Create Blips
     local blip = AddBlipForCoord(vector3(210.49, -1381.94, 29.58))
-    SetBlipSprite(blip, 814)
+    SetBlipSprite(blip, 764)
     SetBlipDisplay(blip, 4)
     SetBlipScale(blip, 0.65)
     SetBlipColour(blip, 43)

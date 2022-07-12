@@ -46,7 +46,6 @@ function getNewFormation(infos) {
 						</div>
 					</div>
 				</div>`
-	console.log("posseded: ", infos.disabled)
 	html = html.replace("_image", infos.image)
 				.replace("_title", infos.title)
 				.replace("_description", infos.description)
