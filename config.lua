@@ -5,7 +5,7 @@ CustomFont = nil --[nil]: use system default font - or ['name of your custom fon
 Config = {}
 Config.scoretopass = 80
 Config.SpeedMultiplier = 3.6
-Config.seatbelt = false
+Config.seatbelt = true
 
 
 --[[
@@ -87,7 +87,8 @@ Config.CheckPoints = {
 
 				if class ~= 8 and class ~= 13 and class ~= 14 then
 					QBCore.Functions.Notify(Lang:t('info.fasten_your_seat_belt_and_start_the_engine_to_start_the_test'), 'primary', 4000)
-					while not exports['cd_carhud']:checkseatbelt() do
+
+					while not Checkseatbelt() do
 						Wait(100)
 					end
 				else
